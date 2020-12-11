@@ -1,71 +1,60 @@
 <script>
 	import Pizza from './Pizza.svelte';
-	import { comparePizzas } from './Utils.svelte';
+	import Results from './Results.svelte';
+	import { pricePSI } from './Utils.svelte';
 	
-	let pizzas = [];
-	
-	$: pizzas = [
-// 		[price, size]
-// 		[12, 14],
-// 		[15, 16],
-// 		[20, 24],
-// 		[5, 100]
-	];
+	$: pizzas = []; // [size, price]
 	
 	let p = ''; // bind to input fields
 	let s = ''; // bind to input fields
 	
 	function addPizza() {
-// 		let n = pizzas.length();
-		pizzas = [...pizzas, [p, s]];
+		if (s > 30) {
+			error = "That's an unbelievably large pizza...";
+			return;
+		}
+		pizzas = [...pizzas, [s, p]];
 		p = ''; // reset input field value
 		s = ''; // reset input field value
+		if (error) {error = ''};
 	};
 	
-	let sorted_pizzas = comparePizzas(pizzas);
+	$: sorted_pizzas = pizzas.slice().sort((p1, p2) => pricePSI(p1) > pricePSI(p2));
 	
 	function removePie(event) {
-		return pizzas.splice(0, 1)
+		pizzas.splice(event.detail.id, 1)
+		pizzas = pizzas
 	}
+	
+	let error;
 </script>
 
 <h1>Compare some pizzas!</h1>
 
+<div class="error">{#if error}{error}{/if}</div>
+
 <label>
-	<input type="text" placeholder="Price" bind:value={p}>
 	<input type="text" placeholder="Size" bind:value={s}>
+	<input type="text" placeholder="Price" bind:value={p}>
 </label>
 <button on:click={addPizza}>
 	Add pizza
 </button>
 
-{#if pizzas.length > 0}
-	<h3>
-		Pizzas:
-	</h3>
-	{#each pizzas}
-		<Pizza on:remove={removePie} {pizzas}/>
+{#if pizzas.length}
+<ul>
+	{#each pizzas as pizza, i}
+		<Pizza on:remove={removePie} {pizza} {i}/>
 	{/each}
-
-	<h2>Results:</h2>
-	<p>
-		The best deal is the {sorted_pizzas[0][1]}" pizza for ${sorted_pizzas[0][0]}!
-	</p>
+</ul>
+	<Results bind:sorted_pizzas/>
 {/if}
 
-
-// // // // // // // // // // // // // // // // 
-
-<script>
-	export let name;
-</script>
-
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
-
 <style>
+	.error {
+		color: red;
+	}
+	
 	main {
 		text-align: center;
 		padding: 1em;

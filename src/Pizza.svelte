@@ -1,21 +1,19 @@
 <script>
 	import { createEventDispatcher } from 'svelte';
 	
-	export let price;
-	export let size;
-	export let id;
+	export let i;
+	export let pizza;
 	
 	const dispatch = createEventDispatcher();
 	
 	function removePie() {
 		dispatch('remove', {
-			id: id
+			id: i
 		});
 	}
 </script>
 
-<p>
-	Pizza {id+1}:
-	{size}" pizza for ${price}
-	<button on:click={removePie}>x</button>
-</p>
+<li>
+	{pizza[0]}" pizza for ${pizza[1]}
+	<button on:click={removePie}>delete</button>
+</li>
