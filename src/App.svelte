@@ -27,6 +27,10 @@
 	}
 	
 	let error;
+
+	function reset() {
+		pizzas = [];
+	}
 </script>
 
 <h1>Compare some pizzas!</h1>
@@ -47,6 +51,7 @@
 		<Pizza on:remove={removePie} {pizza} {i}/>
 	{/each}
 </ul>
+	<button on:click={reset}>Reset</button>
 	<Results bind:sorted_pizzas/>
 {/if}
 
