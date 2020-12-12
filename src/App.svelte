@@ -1,7 +1,7 @@
 <script>
 	import Pizza from './Pizza.svelte';
 	import Results from './Results.svelte';
-	import { pricePSI } from './Utils.svelte';
+	import { pricePSI } from './utils.js';
 	
 	$: pizzas = []; // [size, price]
 	
