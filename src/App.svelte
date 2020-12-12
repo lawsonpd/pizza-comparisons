@@ -52,7 +52,11 @@
 	{/each}
 </ul>
 	<button on:click={reset}>Reset</button>
-	<Results bind:sorted_pizzas/>
+	{#if pizzas.length > 1}
+		<Results bind:sorted_pizzas/>
+	{:else}
+		<p>Add another pizza to see the comparison</p>
+	{/if}
 {/if}
 
 <style>
