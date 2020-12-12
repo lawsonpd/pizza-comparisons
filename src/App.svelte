@@ -33,31 +33,33 @@
 	}
 </script>
 
-<h1>Compare some pizzas!</h1>
+<main>
+	<h1>Compare some pizzas!</h1>
 
-<div class="error">{#if error}{error}{/if}</div>
+	<div class="error">{#if error}{error}{/if}</div>
 
-<label>
-	<input type="text" placeholder="Size" bind:value={s}>
-	<input type="text" placeholder="Price" bind:value={p}>
-</label>
-<button on:click={addPizza}>
-	Add pizza
-</button>
+	<label>
+		<input type="text" placeholder="Size" bind:value={s}>
+		<input type="text" placeholder="Price" bind:value={p}>
+	</label>
+	<button on:click={addPizza}>
+		Add pizza
+	</button>
 
-{#if pizzas.length}
-<ul>
-	{#each pizzas as pizza, i}
-		<Pizza on:remove={removePie} {pizza} {i}/>
-	{/each}
-</ul>
-	<button on:click={reset}>Reset</button>
-	{#if pizzas.length > 1}
-		<Results bind:sorted_pizzas/>
-	{:else}
-		<p>Add another pizza to see the comparison</p>
+	{#if pizzas.length}
+	<ul>
+		{#each pizzas as pizza, i}
+			<Pizza on:remove={removePie} {pizza} {i}/>
+		{/each}
+	</ul>
+		<button on:click={reset}>Reset</button>
+		{#if pizzas.length > 1}
+			<Results bind:sorted_pizzas/>
+		{:else}
+			<p>Add another pizza to see the comparison</p>
+		{/if}
 	{/if}
-{/if}
+</main>
 
 <style>
 	.error {
