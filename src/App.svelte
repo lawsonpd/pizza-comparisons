@@ -2,6 +2,11 @@
 	import Pizza from './Pizza.svelte';
 	import Results from './Results.svelte';
 	import { pricePSI } from './Utils.svelte';
+	import { myVal } from './store.js';
+
+	myVal.subscribe(value => {
+		console.log(value);
+	});
 	
 	$: pizzas = []; // [size, price]
 	
