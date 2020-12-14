@@ -12,8 +12,9 @@ function pricePSI(pizza) {
 
 function comparePizzas(pizzas) {
     // @param pizzas ::= [[size, price], ...]
-    pizzas.sort((p1, p2) => pricePSI(p1) > pricePSI(p2));
-    return pizzas;
+    let arr = pizzas.slice();
+    arr.sort((p1, p2) => pricePSI(p1) > pricePSI(p2));
+    return arr;
 }
 
 module.exports = {

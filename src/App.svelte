@@ -1,7 +1,7 @@
 <script>
 	import Pizza from './Pizza.svelte';
 	import Results from './Results.svelte';
-	import { pricePSI } from './utils.js';
+	import { comparePizzas } from './utils.js';
 	
 	$: pizzas = []; // [size, price]
 	
@@ -19,7 +19,7 @@
 		if (error) {error = ''};
 	};
 	
-	$: sorted_pizzas = pizzas.slice().sort((p1, p2) => pricePSI(p1) > pricePSI(p2));
+	$: sorted_pizzas = comparePizzas(pizzas);
 	
 	function removePie(event) {
 		pizzas.splice(event.detail.id, 1)
