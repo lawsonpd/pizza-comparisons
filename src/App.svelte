@@ -5,8 +5,8 @@
 	
 	$: pizzas = []; // [size, price]
 	
-	let p = ''; // bind to input fields
 	let s = ''; // bind to input fields
+	let p = ''; // bind to input fields
 	
 	function addPizza() {
 		if (s > 30) {
@@ -14,8 +14,8 @@
 			return;
 		}
 		pizzas = [...pizzas, [s, p]];
-		p = ''; // reset input field value
 		s = ''; // reset input field value
+		p = ''; // reset input field value
 		if (error) {error = ''};
 	};
 	
@@ -64,6 +64,7 @@
 <style>
 	.error {
 		color: red;
+		margin: 1% auto;
 	}
 	
 	main {
