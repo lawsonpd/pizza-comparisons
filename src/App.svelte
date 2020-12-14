@@ -22,15 +22,13 @@
 	$: sorted_pizzas = comparePizzas(pizzas);
 	
 	function removePie(event) {
-		pizzas.splice(event.detail.id, 1)
-		pizzas = pizzas
+		pizzas.splice(event.detail.id, 1);
+		pizzas = pizzas;
 	}
 	
 	let error;
 
-	function reset() {
-		pizzas = [];
-	}
+	const reset = () => pizzas = [];
 </script>
 
 <main>
