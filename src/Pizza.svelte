@@ -7,7 +7,10 @@
 	
 	const dispatch = createEventDispatcher();
 	
-	function removePie() {
+	function remove() {
+		// @dev This fn doesn't actually remove a pizza from the array of pizzas,
+		// but rather it dispatches the 'remove' message up to the parent component
+		// and there the `removePie` fn is called and removes the item.
 		dispatch('remove', {
 			id: id
 		});
@@ -16,5 +19,5 @@
 
 <li transition:fade>
 	{pizza[0]}" pizza for ${pizza[1]}
-	<button on:click={removePie}>delete</button>
+	<button on:click={remove}>delete</button>
 </li>

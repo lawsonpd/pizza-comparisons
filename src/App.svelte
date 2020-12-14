@@ -5,17 +5,17 @@
 	
 	$: pizzas = []; // [size, price]
 	
-	let s = ''; // bind to input fields
-	let p = ''; // bind to input fields
+	let size = ''; // bind to input fields
+	let pizza = ''; // bind to input fields
 	
 	function addPizza() {
-		if (s > 30) {
+		if (size > 30) {
 			error = "That's an unbelievably large pizza...";
 			return;
 		}
-		pizzas = [...pizzas, [s, p]];
-		s = ''; // reset input field value
-		p = ''; // reset input field value
+		pizzas = [...pizzas, [size, pizza]];
+		size = ''; // reset input field value
+		pizza = ''; // reset input field value
 		if (error) {error = ''};
 	};
 	
@@ -39,8 +39,8 @@
 	<div class="error">{#if error}{error}{/if}</div>
 
 	<label>
-		<input type="text" placeholder="Size" bind:value={s}>
-		<input type="text" placeholder="Price" bind:value={p}>
+		<input type="text" placeholder="Size" bind:value={size}>
+		<input type="text" placeholder="Price" bind:value={pizza}>
 	</label>
 	<button on:click={addPizza}>
 		Add pizza
