@@ -2,14 +2,14 @@
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
 	
-	export let i;
+	export let id;
 	export let pizza;
 	
 	const dispatch = createEventDispatcher();
 	
 	function removePie() {
 		dispatch('remove', {
-			id: i
+			id: id
 		});
 	}
 </script>

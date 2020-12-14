@@ -48,8 +48,8 @@
 
 	{#if pizzas.length}
 	<ul>
-		{#each pizzas as pizza, i}
-			<Pizza on:remove={removePie} {pizza} {i}/>
+		{#each pizzas as pizza, id}
+			<Pizza on:remove={removePie} {pizza} {id}/>
 		{/each}
 	</ul>
 		<button on:click={reset}>Reset</button>
